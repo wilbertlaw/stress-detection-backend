@@ -82,11 +82,9 @@ interface = gr.TabbedInterface([text_interface, audio_interface], ['Text Analysi
 # 設定 Streamlit 頁面標題
 st.set_page_config(page_title="Stress Detection App", layout="wide")
 
-# 在 Streamlit 中啟動並嵌入 Gradio 介面（不開啟瀏覽器新分頁，僅在後台運行）
-import streamlit.components.v1 as components
 # inline=True 會讓 Gradio 直接生成一個可嵌入的本地網址
 _, _, inline_url = interface.launch(inline=True, prevent_thread_lock=True)
 
 # 使用 Streamlit 的 iframe 功能將 Gradio 介面顯示出來
 st.title("Psychological Stress Detection System")
-components.iframe(inline_url, height=800, scrolling=True)
+st.iframe(inline_url, height=800, scrolling=True)
