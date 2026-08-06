@@ -1,6 +1,6 @@
-gradio
+streamlit
 torch
-nltk
+nltkhttps://github.com/wilbertlaw/stress-detection-backend/blob/main/requirements.txt
 pandas
 tqdm
 SpeechRecognition
