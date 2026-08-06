@@ -1,6 +1,6 @@
 streamlit
 torch
-nltkhttps://github.com/wilbertlaw/stress-detection-backend/blob/main/requirements.txt
+nltk
 pandas
 tqdm
 SpeechRecognition
