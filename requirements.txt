@@ -1,6 +1,5 @@
 streamlit
-torch
-nltk
+sklearn
 pandas
-tqdm
 SpeechRecognition
+gradio
