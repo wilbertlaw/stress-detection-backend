@@ -1,0 +1,32 @@
+name: Run Gradio App Permanently
+
+# 💡 設定觸發條件：每當你提交程式碼，或者每天固定時間自動重啟（防過期）
+on:
+  push:
+    branches: [ "main" ]
+  schedule:
+    - cron: '0 0 * * *' # 每天國際標準時間 00:00 自動重啟一次
+
+jobs:
+  run-gradio:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: 1. 複製 GitHub 程式碼到虛擬機
+      uses: actions/checkout@v4
+
+    - name: 2. 初始化 Python 環境
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.10'
+
+    - name: 3. 安裝所需的 Python 套件
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+
+    - name: 4. 24小時不中斷執行 Gradio
+      env:
+        GRADIO_SHARE: "true" # 💡 強制在 GitHub 背景開啟對外分享的永久公共隧道
+      run: |
+        python app.py
