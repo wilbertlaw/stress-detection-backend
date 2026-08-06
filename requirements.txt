@@ -1,0 +1,6 @@
+gradio
+torch
+nltk
+pandas
+tqdm
+SpeechRecognition
