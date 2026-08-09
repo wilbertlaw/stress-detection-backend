@@ -23,7 +23,7 @@ tab1, tab2 = st.tabs(['Text Analysis', 'Audio Analysis'])
 
 with tab1:
   text_input = st.text_area('Text Input')
-  submitted1 = st.button('Submit')
+  submitted1 = st.button('Submit', key='submit_text')
 
   if submitted1:
     text_input_dt = vec.transform([text_input.strip()])
@@ -36,7 +36,7 @@ with tab1:
 
 with tab2:
   audio_input = st.file_uploader('Audio Input', type=['.wav', '.mp3'])
-  submitted2 = st.button('Submit')
+  submitted2 = st.button('Submit', key='submit_audio')
 
   if submitted2:
     if audio_input is not None:
