@@ -23,9 +23,9 @@ tab1, tab2 = st.tabs(['Text Analysis', 'Audio Analysis'])
 
 with tab1:
   text_input = st.text_area('Text Input')
-  submitted = st.button('Submit')
+  submitted1 = st.button('Submit')
 
-  if submitted:
+  if submitted1:
     text_input_dt = vec.transform([text_input.strip()])
     text_pred = model.predict(text_input_dt.toarray())
 
@@ -36,19 +36,20 @@ with tab1:
 
 with tab2:
   audio_input = st.file_uploader('Audio Input', type=['.wav', '.mp3'])
-  submitted = st.button('Submit')
+  submitted2 = st.button('Submit')
 
-  if audio_input is not None:
-    r = sr.Recognizer()
-    with sr.AudioFile(audio_input) as source:
-      audio = r.listen(source)
-    audio_text = r.recognize_google(audio, language='en-US').strip()
-    audio_input_dt = vec.transform([audio_text])
-    audio_pred = model.predict(audio_input_dt.toarray())
+  if submitted2:
+    if audio_input is not None:
+      r = sr.Recognizer()
+      with sr.AudioFile(audio_input) as source:
+        audio = r.listen(source)
+      audio_text = r.recognize_google(audio, language='en-US').strip()
+      audio_input_dt = vec.transform([audio_text])
+      audio_pred = model.predict(audio_input_dt.toarray())
 
-    if audio_pred == 1:
-      st.write('Psychological Stress Detected')
+      if audio_pred == 1:
+        st.write('Psychological Stress Detected')
+      else:
+        st.write('No Psychological Stress Detected')
     else:
-      st.write('No Psychological Stress Detected')
-  else:
-    st.stop()
+      st.stop()
