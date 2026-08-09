@@ -22,8 +22,8 @@ with open('model.pkl', 'rb') as f:
 tab1, tab2 = st.tabs(['Text Analysis', 'Audio Analysis'])
 
 with tab1:
-  text_input = st.text_input('Text Input')
-  submitted = st.form_submit_button('Submit')
+  text_input = st.text_area('Text Input')
+  submitted = st.button('Submit')
 
   if submitted:
     text_input_dt = vec.transform([text_input.strip()])
@@ -36,7 +36,7 @@ with tab1:
 
 with tab2:
   audio_input = st.file_uploader('Audio Input', type=['.wav', '.mp3'])
-  submitted = st.form_submit_button('Submit')
+  submitted = st.button('Submit')
 
   if audio_input is not None:
     r = sr.Recognizer()
